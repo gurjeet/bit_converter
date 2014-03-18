@@ -1,0 +1,193 @@
+<!doctype html>
+<html ng-app>
+    <head>
+        <title>Convert between bits, kilobits, Bytes, kiloBytes, Megabits, MegaBytes, Gigabits, GigaBytes, Terabits, TeraBytes, Petabits, PetaBytes</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0/angular.min.js"></script>
+        <style>
+            input {
+                text-align: right;
+            }
+        </style>
+        <script>
+
+            function updateValues(scope, bitValue) {
+                scope.bitValue  = bitValue;
+                scope.kilobitValue  = bitValue / 1024;
+                scope.byteValue = bitValue / 8;
+                scope.kBValue   = bitValue / 8 / 1024;
+                scope.MBValue   = bitValue / 8 / 1024 / 1024;
+                scope.GBValue   = bitValue / 8 / 1024 / 1024 / 1024;
+                scope.TBValue   = bitValue / 8 / 1024 / 1024 / 1024 / 1024;
+                scope.PBValue   = bitValue / 8 / 1024 / 1024 / 1024 / 1024 / 1024;
+            }
+
+            function appCtrl($scope) {
+
+                // The default when the app is loaded
+                //$scope.bitValue = 8 * 1024;
+
+                $scope.$watch("bitValue", function(newVal, oldVal){
+                    updateValues($scope, newVal);
+                });
+
+                $scope.$watch("kilobitValue", function(newVal, oldVal){
+                    updateValues($scope, newVal * 1024);
+                });
+
+                $scope.$watch("byteValue", function(newVal, oldVal){
+                    updateValues($scope, newVal * 8);
+                });
+
+                $scope.$watch("kBValue", function(newVal, oldVal){
+                    updateValues($scope, newVal * 8 * 1024);
+                });
+
+                $scope.$watch("MBValue", function(newVal, oldVal){
+                    updateValues($scope, newVal * 8 * 1024 * 1024);
+                });
+
+                $scope.$watch("GBValue", function(newVal, oldVal){
+                    updateValues($scope, newVal * 8 * 1024 * 1024 * 1024);
+                });
+
+                $scope.$watch("TBValue", function(newVal, oldVal){
+                    updateValues($scope, newVal * 8 * 1024 * 1024 * 1024 * 1024);
+                });
+
+                $scope.$watch("PBValue", function(newVal, oldVal){
+                    updateValues($scope, newVal * 8 * 1024 * 1024 * 1024 * 1024 * 1024);
+                });
+            }
+        </script>
+    </head>
+    <body>
+        <form name="app" ng-controller="appCtrl">
+            <table>
+                <tr>
+                    <td>
+                        bits
+                    </td>
+                    <td>
+                       <input
+                            type="number"
+                            name="bitField"
+                            ng-model="bitValue"
+                            placeholder="number of bits here">
+                    </td>
+                    <td>
+                        b
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        kilobits
+                    </td>
+                    <td>
+                       <input
+                            type="number"
+                            name="kilobitField"
+                            ng-model="kilobitValue"
+                            placeholder="number of kilobits here">
+                    </td>
+                    <td>
+                        kb
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Bytes
+                    </td>
+                    <td>
+                       <input
+                            type="number"
+                            name="byteField"
+                            ng-model="byteValue"
+                            placeholder="number of bytes here">
+                    </td>
+                    <td>
+                        B
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        kiloBytes
+                    </td>
+                    <td>
+                       <input
+                            type="number"
+                            name="kBField"
+                            ng-model="kBValue"
+                            placeholder="number of kiloBytes here">
+                    </td>
+                    <td>
+                        kB
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        MegaBytes
+                    </td>
+                    <td>
+                       <input
+                            type="number"
+                            name="MBField"
+                            ng-model="MBValue"
+                            placeholder="number of MegaBytes here">
+                    </td>
+                    <td>
+                        MB
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        GigaBytes
+                    </td>
+                    <td>
+                       <input
+                            type="number"
+                            name="GBField"
+                            ng-model="GBValue"
+                            placeholder="number of GigaBytes here">
+                    </td>
+                    <td>
+                        GB
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        TeraBytes
+                    </td>
+                    <td>
+                       <input
+                            type="number"
+                            name="TBField"
+                            ng-model="TBValue"
+                            placeholder="number of TeraBytes here">
+                    </td>
+                    <td>
+                        TB
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        PetaBytes
+                    </td>
+                    <td>
+                       <input
+                            type="number"
+                            name="PBField"
+                            ng-model="PBValue"
+                            placeholder="number of PetaBytes here">
+                    </td>
+                    <td>
+                        PB
+                    </td>
+                </tr>
+            <table>
+             <span class="error"
+                    ng-show="app.bitField.$error.number
+                            || app.byteField.$error.number
+                            || app.kBField.$error.number ">Not valid number!</span>
+        </form>
+    </body>
+</html>
