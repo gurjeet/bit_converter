@@ -61,6 +61,14 @@
         </script>
     </head>
     <body>
+
+        <h1>Converter for digital units</h1>
+        <p>
+            Input the value in a field corresponding to the unit you want converted, and the
+            application will automatically populate the other fields with the converted value
+            in respective units.
+        </p>
+
         <form name="app" ng-controller="appCtrl">
             <table>
                 <tr>
@@ -184,10 +192,21 @@
                     </td>
                 </tr>
             <table>
-             <span class="error"
-                    ng-show="app.bitField.$error.number
-                            || app.byteField.$error.number
-                            || app.kBField.$error.number ">Not valid number!</span>
+            <span class="error" ng-show="app.bitField.$error.number">Not valid number!</span>
+            <h2>About</h2>
+                <p>
+                    This is a simple application writen using <a href="http://www.angularjs.org">AngularJS</a>.
+                    This application works completely within the browser, and does not send any data to the server.
+                    Hence the conversions are instantaneous.
+                </p>
+
+                <p>
+                    Inspired by <a href="http://www.matisse.net/bitcalc/">Bit Calculator</a>, but that requires
+                    that the user press a button, and the data is sent to the server, which performs
+                    the calulation and sends the results back.
+                </p>
+
+
         </form>
     </body>
 </html>
